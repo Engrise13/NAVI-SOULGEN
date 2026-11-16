@@ -1,3 +1,5 @@
+import random  # noqa
+
 from pyfiglet import Figlet
 from rich.console import Console
 from rich.panel import Panel
@@ -46,7 +48,14 @@ while True:
             lang = Prompt.ask(
                 "[bold green]language[/]", choices=["EN", "RU"], default="EN"
             )
-        # continue
+            rand = Prompt.ask(
+                "[bold green]random token?", choices=["NO", "YES"], default="NO"
+            )
+
+            soul = []
+            speech = []
+            mind = []
+
     except KeyboardInterrupt:
         console.print("\n[red]Forcequit![/]")
         break
