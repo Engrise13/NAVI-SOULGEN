@@ -1,4 +1,4 @@
-import random  # noqa
+import random
 
 from pyfiglet import Figlet
 from rich.console import Console
@@ -37,25 +37,35 @@ while True:
     try:
         action = Prompt.ask(
             "[bold green]choose action[/]",
-            choices=["calibrate", "quit"],
+            choices=["calibrate", "read", "quit"],
             default="calibrate",
         )
 
         if action == "quit":
             console.print("[red]Quit![/]")
             break
+
+        elif action == "read":
+            pass
+
         else:
             lang = Prompt.ask(
                 "[bold green]language[/]", choices=["EN", "RU"], default="EN"
             )
             rand = Prompt.ask(
-                "[bold green]random token?", choices=["NO", "YES"], default="NO"
+                "[bold green]random token generation:",
+                choices=["NO", "YES"],
+                default="NO",
             )
 
-            soul = []
-            speech = []
-            mind = []
-
+            if rand == "YES":
+                soul = random.choices("12345", k=4)
+                speech = random.choices("12345", k=4)
+                mind = random.choices("12345", k=4)
+                token = f"NAVI-{lang}-{''.join(soul)}-{''.join(speech)}-{''.join(mind)}"
+                console.print(f"[bold green]your token is:[/] {token}")
+            else:
+                pass
     except KeyboardInterrupt:
         console.print("\n[red]Forcequit![/]")
         break
