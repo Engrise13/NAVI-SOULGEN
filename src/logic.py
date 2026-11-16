@@ -11,7 +11,7 @@ def generate(soul: tuple, speech: tuple, mind: tuple, lang: str) -> str:
 
     # match by index: dict + tuple -> key in dict + value in tuple
     for rules, values in zip(rules_map[lang], (soul, speech, mind)):
-        for key, level in zip(rules.keys(), values):
-            personality.append(rules[key][level])
+        for key, value in zip(rules.keys(), values):
+            personality.append(rules[key][value])
 
     return "\n".join(personality)
