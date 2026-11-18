@@ -66,7 +66,22 @@ while True:
                 console.print(f"[bold green]your token is:[/] {token}")
             else:
                 if lang == "EN":
-                    console.print("1 - minimal, 5 - extreme")
+                    console.print("[bold magenta]calibration levels:[/]")
+                    console.print(
+                        "[bold cyan]1 (minimal)[/]: barely present, near-zero trace"
+                    )
+                    console.print(
+                        "[bold green]2 (low)[/]: subtle, restrained, understated presence"
+                    )
+                    console.print(
+                        "[bold yellow]3 (moderate)[/]: balanced, natural baseline level"
+                    )
+                    console.print(
+                        "[bold dark_orange]4 (high)[/]: strong, prominent, dominant trait"
+                    )
+                    console.print(
+                        "[bold red]5 (extreme)[/]: absolute maximum, peak intensity"
+                    )
                     warmth = Prompt.ask(
                         "[bold green]warmth (empathy and emotional involvement)[/]",
                         choices=["1", "2", "3", "4", "5"],
@@ -139,9 +154,24 @@ while True:
                         default="3",
                     )
                     token = f"NAVI-EN-{warmth}{sharpness}{chaos}{ego}-{verbosity}{formality}{expressiveness}{pedantry}-{proactivity}{caution}{metaphor}{skepticism}"
-                    print(token)
+                    console.print(f"[bold green]your token is:[/] {token}")
                 elif lang == "RU":
-                    console.print("1 - минимум, 5 - максимум")
+                    console.print("[bold magenta]уровни калибровки:[/]")
+                    console.print(
+                        "[bold cyan]1 (минимальный)[/]: почти полное отсутствие признака"
+                    )
+                    console.print(
+                        "[bold green]2 (низкий)[/]: слабое, сдержанное проявление черты"
+                    )
+                    console.print(
+                        "[bold yellow]3 (умеренный)[/]: естественный, сбалансированный средний уровень"
+                    )
+                    console.print(
+                        "[bold dark_orange]4 (высокий)[/]: яркое, доминирующее проявление качества"
+                    )
+                    console.print(
+                        "[bold red]5 (экстремальный)[/]: абсолютный максимум, предельная концентрация"
+                    )
                     warmth = Prompt.ask(
                         "[bold green]теплота (уровень эмпатии и эмоциональной вовлеченности)[/]",
                         choices=["1", "2", "3", "4", "5"],
@@ -214,7 +244,7 @@ while True:
                         default="3",
                     )
                     token = f"NAVI-RU-{warmth}{sharpness}{chaos}{ego}-{verbosity}{formality}{expressiveness}{pedantry}-{proactivity}{caution}{metaphor}{skepticism}"
-                    print(token)
+                    console.print(f"[bold green]твой токен:[/] {token}")
     except KeyboardInterrupt:
         console.print("\n[red]Forcequit![/]")
         break
