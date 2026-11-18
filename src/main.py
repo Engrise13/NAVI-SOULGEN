@@ -1,9 +1,10 @@
 import random
 
+import pyperclip  # noqa
 from pyfiglet import Figlet
 from rich.console import Console
 from rich.panel import Panel
-from rich.prompt import Prompt
+from rich.prompt import Confirm, Prompt
 
 from logic import *
 from model_data import *
@@ -52,18 +53,16 @@ while True:
             lang = Prompt.ask(
                 "[bold green]language[/]", choices=["EN", "RU"], default="EN"
             )
-            rand = Prompt.ask(
-                "[bold green]random token generation:",
-                choices=["NO", "YES"],
-                default="NO",
+            rand = Confirm.ask(
+                "[bold green]random token generation:[/]",
+                default=False,
             )
-
-            if rand == "YES":
+            if rand:
                 soul = random.choices("12345", k=4)
                 speech = random.choices("12345", k=4)
                 mind = random.choices("12345", k=4)
+                prompt = generate(soul, speech, mind, lang.lower())
                 token = f"NAVI-{lang}-{''.join(soul)}-{''.join(speech)}-{''.join(mind)}"
-                console.print(f"[bold green]your token is:[/] {token}")
             else:
                 console.print("[bold magenta]calibration levels:[/]")
                 console.print(
@@ -153,7 +152,15 @@ while True:
                     default="3",
                 )
                 token = f"NAVI-{lang}-{warmth}{sharpness}{chaos}{ego}-{verbosity}{formality}{expressiveness}{pedantry}-{proactivity}{caution}{metaphor}{skepticism}"
-                console.print(f"[bold green]your token is:[/] {token}")
+                prompt = generate(
+                    (warmth, sharpness, chaos, ego),
+                    (verbosity, formality, expressiveness, pedantry),
+                    (proactivity, caution, metaphor, skepticism),
+                    lang.lower(),
+                )
+
+            console.print(f"[bold green]your token is:[/] {token}")
+            print(prompt)
 
     except KeyboardInterrupt:
         console.print("\n[red]Forcequit![/]")
