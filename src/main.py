@@ -19,7 +19,7 @@ header = font.renderText("NAVI SOULGEN")
 start_text = f"""
 [bold green]{header}[/]
 digital personality (LLM prompt) generator built with [bold cyan]Python[/]
-creates an unique token that defines an exact personality (244M+ combinations)
+creates a unique token that defines an exact personality (244M+ combinations)
 [bold magenta]personality parts:[/]
 [dim]{"─" * 42}[/]
 • [bold green]SOUL[/]       personality, tone, and attitude
