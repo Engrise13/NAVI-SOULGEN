@@ -1,6 +1,7 @@
 import random
 
-import pyperclip  # noqa
+import ollama  # noqa
+import pyperclip
 from pyfiglet import Figlet
 from rich.console import Console
 from rich.panel import Panel
@@ -38,7 +39,7 @@ while True:
     try:
         action = Prompt.ask(
             "[bold green]choose action[/]",
-            choices=["calibrate", "read", "quit"],
+            choices=["calibrate", "summary", "quit"],
             default="calibrate",
         )
 
@@ -46,7 +47,7 @@ while True:
             console.print("[red]Quit![/]")
             break
 
-        elif action == "read":
+        elif action == "summary":
             pass
 
         else:
@@ -58,11 +59,9 @@ while True:
                 default=False,
             )
             if rand:
-                soul = random.choices("12345", k=4)
-                speech = random.choices("12345", k=4)
-                mind = random.choices("12345", k=4)
-                prompt = generate(soul, speech, mind, lang.lower())
-                token = f"NAVI-{lang}-{''.join(soul)}-{''.join(speech)}-{''.join(mind)}"
+                soul = tuple(random.choices("12345", k=4))
+                speech = tuple(random.choices("12345", k=4))
+                mind = tuple(random.choices("12345", k=4))
             else:
                 console.print("[bold magenta]calibration levels:[/]")
                 console.print(
@@ -80,87 +79,47 @@ while True:
                 console.print(
                     "[bold red]5 (extreme)[/]: absolute maximum, peak intensity"
                 )
-                warmth = Prompt.ask(
-                    "[bold green]warmth (empathy and emotional involvement)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
+                traits = {
+                    "warmth": "empathy and emotional involvement",
+                    "sharpness": "degree of sarcasm and irony",
+                    "chaos": "non-linear thinking and associative leaps",
+                    "ego": "level of confidence and conversational dominance",
+                    "verbosity": "text length and depth of detail",
+                    "formality": "speech register from slang to legalese",
+                    "expressiveness": "emotional intensity and tonal vividness",
+                    "pedantry": "precision of terms and attention to detail",
+                    "proactivity": "initiative and tendency to ask follow-ups",
+                    "caution": "focus on risks, pitfalls, and safety",
+                    "metaphor": "use of analogies, imagery, and allegories",
+                    "skepticism": "critical scrutiny of premises and contradictions",
+                }
 
-                sharpness = Prompt.ask(
-                    "[bold green]sharpness (degree of sarcasm and irony)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
+                vals = [
+                    Prompt.ask(
+                        f"[bold green]{name} ({desc})[/]",
+                        choices=["1", "2", "3", "4", "5"],
+                        default="3",
+                    )
+                    for name, desc in traits.items()
+                ]
 
-                chaos = Prompt.ask(
-                    "[bold green]chaos (non-linear thinking and associative leaps)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
+                soul, speech, mind = tuple(vals[:4]), tuple(vals[4:8]), tuple(vals[8:])
 
-                ego = Prompt.ask(
-                    "[bold green]ego (level of confidence and conversational dominance)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
-
-                verbosity = Prompt.ask(
-                    "[bold green]verbosity (text length and depth of detail)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
-
-                formality = Prompt.ask(
-                    "[bold green]formality (speech register from slang to legalese)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
-
-                expressiveness = Prompt.ask(
-                    "[bold green]expressiveness (emotional intensity and tonal vividness)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
-
-                pedantry = Prompt.ask(
-                    "[bold green]pedantry (precision of terms and attention to detail)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
-
-                proactivity = Prompt.ask(
-                    "[bold green]proactivity (initiative and tendency to ask follow-ups)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
-
-                caution = Prompt.ask(
-                    "[bold green]caution (focus on risks, pitfalls, and safety)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
-
-                metaphor = Prompt.ask(
-                    "[bold green]metaphor (use of analogies, imagery, and allegories)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
-
-                skepticism = Prompt.ask(
-                    "[bold green]skepticism (critical scrutiny of premises and contradictions)[/]",
-                    choices=["1", "2", "3", "4", "5"],
-                    default="3",
-                )
-                token = f"NAVI-{lang}-{warmth}{sharpness}{chaos}{ego}-{verbosity}{formality}{expressiveness}{pedantry}-{proactivity}{caution}{metaphor}{skepticism}"
-                prompt = generate(
-                    (warmth, sharpness, chaos, ego),
-                    (verbosity, formality, expressiveness, pedantry),
-                    (proactivity, caution, metaphor, skepticism),
-                    lang.lower(),
-                )
+            token = f"NAVI-{lang}-{''.join(soul)}-{''.join(speech)}-{''.join(mind)}"
+            prompt = generate(soul, speech, mind, lang.lower())
 
             console.print(f"[bold green]your token is:[/] {token}")
-            print(prompt)
+            clipboard = Prompt.ask(
+                "[bold green]copy to clipboard[/]",
+                choices=["prompt", "token", "none"],
+                default="prompt",
+            )
+            if clipboard == "prompt":
+                pyperclip.copy(prompt)
+                console.print("[bold green]copied to clipboard![/]")
+            elif clipboard == "token":
+                pyperclip.copy(token)
+                console.print("[bold green]copied to clipboard![/]")
 
     except KeyboardInterrupt:
         console.print("\n[red]Forcequit![/]")
