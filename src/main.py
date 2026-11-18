@@ -65,186 +65,96 @@ while True:
                 token = f"NAVI-{lang}-{''.join(soul)}-{''.join(speech)}-{''.join(mind)}"
                 console.print(f"[bold green]your token is:[/] {token}")
             else:
-                if lang == "EN":
-                    console.print("[bold magenta]calibration levels:[/]")
-                    console.print(
-                        "[bold cyan]1 (minimal)[/]: barely present, near-zero trace"
-                    )
-                    console.print(
-                        "[bold green]2 (low)[/]: subtle, restrained, understated presence"
-                    )
-                    console.print(
-                        "[bold yellow]3 (moderate)[/]: balanced, natural baseline level"
-                    )
-                    console.print(
-                        "[bold dark_orange]4 (high)[/]: strong, prominent, dominant trait"
-                    )
-                    console.print(
-                        "[bold red]5 (extreme)[/]: absolute maximum, peak intensity"
-                    )
-                    warmth = Prompt.ask(
-                        "[bold green]warmth (empathy and emotional involvement)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                console.print("[bold magenta]calibration levels:[/]")
+                console.print(
+                    "[bold cyan]1 (minimal)[/]: barely present, near-zero trace"
+                )
+                console.print(
+                    "[bold green]2 (low)[/]: subtle, restrained, understated presence"
+                )
+                console.print(
+                    "[bold yellow]3 (moderate)[/]: balanced, natural baseline level"
+                )
+                console.print(
+                    "[bold dark_orange]4 (high)[/]: strong, prominent, dominant trait"
+                )
+                console.print(
+                    "[bold red]5 (extreme)[/]: absolute maximum, peak intensity"
+                )
+                warmth = Prompt.ask(
+                    "[bold green]warmth (empathy and emotional involvement)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    sharpness = Prompt.ask(
-                        "[bold green]sharpness (degree of sarcasm and irony)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                sharpness = Prompt.ask(
+                    "[bold green]sharpness (degree of sarcasm and irony)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    chaos = Prompt.ask(
-                        "[bold green]chaos (non-linear thinking and associative leaps)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                chaos = Prompt.ask(
+                    "[bold green]chaos (non-linear thinking and associative leaps)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    ego = Prompt.ask(
-                        "[bold green]ego (level of confidence and conversational dominance)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                ego = Prompt.ask(
+                    "[bold green]ego (level of confidence and conversational dominance)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    verbosity = Prompt.ask(
-                        "[bold green]verbosity (text length and depth of detail)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                verbosity = Prompt.ask(
+                    "[bold green]verbosity (text length and depth of detail)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    formality = Prompt.ask(
-                        "[bold green]formality (speech register from slang to legalese)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                formality = Prompt.ask(
+                    "[bold green]formality (speech register from slang to legalese)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    expressiveness = Prompt.ask(
-                        "[bold green]expressiveness (emotional intensity and tonal vividness)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                expressiveness = Prompt.ask(
+                    "[bold green]expressiveness (emotional intensity and tonal vividness)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    pedantry = Prompt.ask(
-                        "[bold green]pedantry (precision of terms and attention to detail)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                pedantry = Prompt.ask(
+                    "[bold green]pedantry (precision of terms and attention to detail)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    proactivity = Prompt.ask(
-                        "[bold green]proactivity (initiative and tendency to ask follow-ups)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                proactivity = Prompt.ask(
+                    "[bold green]proactivity (initiative and tendency to ask follow-ups)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    caution = Prompt.ask(
-                        "[bold green]caution (focus on risks, pitfalls, and safety)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                caution = Prompt.ask(
+                    "[bold green]caution (focus on risks, pitfalls, and safety)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    metaphor = Prompt.ask(
-                        "[bold green]metaphor (use of analogies, imagery, and allegories)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                metaphor = Prompt.ask(
+                    "[bold green]metaphor (use of analogies, imagery, and allegories)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
 
-                    skepticism = Prompt.ask(
-                        "[bold green]skepticism (critical scrutiny of premises and contradictions)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-                    token = f"NAVI-EN-{warmth}{sharpness}{chaos}{ego}-{verbosity}{formality}{expressiveness}{pedantry}-{proactivity}{caution}{metaphor}{skepticism}"
-                    console.print(f"[bold green]your token is:[/] {token}")
-                elif lang == "RU":
-                    console.print("[bold magenta]уровни калибровки:[/]")
-                    console.print(
-                        "[bold cyan]1 (минимальный)[/]: почти полное отсутствие признака"
-                    )
-                    console.print(
-                        "[bold green]2 (низкий)[/]: слабое, сдержанное проявление черты"
-                    )
-                    console.print(
-                        "[bold yellow]3 (умеренный)[/]: естественный, сбалансированный средний уровень"
-                    )
-                    console.print(
-                        "[bold dark_orange]4 (высокий)[/]: яркое, доминирующее проявление качества"
-                    )
-                    console.print(
-                        "[bold red]5 (экстремальный)[/]: абсолютный максимум, предельная концентрация"
-                    )
-                    warmth = Prompt.ask(
-                        "[bold green]теплота (уровень эмпатии и эмоциональной вовлеченности)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
+                skepticism = Prompt.ask(
+                    "[bold green]skepticism (critical scrutiny of premises and contradictions)[/]",
+                    choices=["1", "2", "3", "4", "5"],
+                    default="3",
+                )
+                token = f"NAVI-{lang}-{warmth}{sharpness}{chaos}{ego}-{verbosity}{formality}{expressiveness}{pedantry}-{proactivity}{caution}{metaphor}{skepticism}"
+                console.print(f"[bold green]your token is:[/] {token}")
 
-                    sharpness = Prompt.ask(
-                        "[bold green]острота (степень сарказма, иронии и колкости)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    chaos = Prompt.ask(
-                        "[bold green]хаос (нелинейность мышления и ассоциативные скачки)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    ego = Prompt.ask(
-                        "[bold green]эго (уровень самоуверенности и доминирования в диалоге)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    verbosity = Prompt.ask(
-                        "[bold green]многословность (объем текста и глубина детализации)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    formality = Prompt.ask(
-                        "[bold green]формальность (стиль речи от сленга до канцелярита)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    expressiveness = Prompt.ask(
-                        "[bold green]экспрессия (эмоциональный накал и интонационная яркость)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    pedantry = Prompt.ask(
-                        "[bold green]педантичность (точность терминов и дотошность к деталям)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    proactivity = Prompt.ask(
-                        "[bold green]проактивность (инициативность и склонность задавать вопросы)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    caution = Prompt.ask(
-                        "[bold green]осторожность (фокус на рисках, ошибках и перестраховке)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    metaphor = Prompt.ask(
-                        "[bold green]метафоричность (использование сравнений, образов и аллегорий)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-
-                    skepticism = Prompt.ask(
-                        "[bold green]скептицизм (критичность к вводным и поиск противоречий)[/]",
-                        choices=["1", "2", "3", "4", "5"],
-                        default="3",
-                    )
-                    token = f"NAVI-RU-{warmth}{sharpness}{chaos}{ego}-{verbosity}{formality}{expressiveness}{pedantry}-{proactivity}{caution}{metaphor}{skepticism}"
-                    console.print(f"[bold green]твой токен:[/] {token}")
     except KeyboardInterrupt:
         console.print("\n[red]Forcequit![/]")
         break
