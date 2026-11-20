@@ -68,6 +68,13 @@ while True:
                 if choice == "analyze":
                     model = Prompt.ask("[bold green]model[/]")
                     result = analyze(model, lang.lower(), prompt)
+                    # result returns json with archetype, vibe, strengths, weaknesses
+                    print(result["archetype"])
+                    print(result["vibe"])
+                    print(result["strengths"])  # list
+                    print(result["weakness"])
+                else:
+                    pyperclip.copy(prompt)
 
         else:
             lang = Prompt.ask(

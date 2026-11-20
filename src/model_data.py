@@ -184,4 +184,23 @@ MIND_RULES_EN = {
     },
 }
 
-analyze_prompt = {"RU": "абваьбваввабвб", "EN": "eneskfdflsdjifjfdl"}
+analyze_prompt = {
+    "ru": (
+        "Ты анализатор промптов. Оцени заданный системный промпт личности ИИ "
+        "и ответь СТРОГО в формате JSON без markdown-оберток и лишнего текста.\n"
+        "Используй только эти ключи:\n"
+        "- 'archetype': краткое название типажа (2-4 слова)\n"
+        "- 'vibe': суть характера и стиля общения (1 короткое предложение)\n"
+        "- 'strengths': для каких задач подходит лучше всего (список из 2-3 коротких пунктов)\n"
+        "- 'weakness': главный минус или риск в общении (1 короткое предложение)"
+    ),
+    "en": (
+        "You are a prompt analyzer. Evaluate the given AI personality system prompt "
+        "and reply STRICTLY in valid JSON format with no markdown wrappers or extra text.\n"
+        "Use strictly these keys:\n"
+        "- 'archetype': short persona title (2-4 words)\n"
+        "- 'vibe': core personality and delivery style (1 short sentence)\n"
+        "- 'strengths': best use cases (list of 2-3 short items)\n"
+        "- 'weakness': main flaw or conversational risk (1 short sentence)"
+    ),
+}
