@@ -67,9 +67,6 @@ while True:
 
                 if choice == "analyze":
                     model = Prompt.ask("[bold green]model[/]")
-                    lang = Prompt.ask(
-                        "[bold green]language[/]", choices=["EN", "RU"], default="EN"
-                    )
                     result = analyze(model, lang.lower(), prompt)
 
         else:
