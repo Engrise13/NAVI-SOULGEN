@@ -66,7 +66,7 @@ while True:
                 )
 
                 if choice == "analyze":
-                    result = analyze(prompt)
+                    result = analyze(model, prompt)
 
         else:
             lang = Prompt.ask(

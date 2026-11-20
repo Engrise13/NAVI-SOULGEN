@@ -19,5 +19,5 @@ def generate(soul: tuple, speech: tuple, mind: tuple, lang: str) -> str:
     return "\n".join(personality)
 
 
-def analyze(prompt: str) -> str:
+def analyze(model: str, prompt: str) -> str:
     pass
