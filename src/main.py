@@ -1,14 +1,13 @@
 import random
 import re
 
-import ollama  # noqa
 import pyperclip
 from pyfiglet import Figlet
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Confirm, Prompt
 
-from logic import generate
+from logic import analyze, generate
 from model_data import *
 
 console = Console()
@@ -60,11 +59,15 @@ while True:
                 lang, numbers = match.groups()
                 soul, speech, mind = map(tuple, numbers.split("-"))
                 prompt = generate(soul, speech, mind, lang.lower())
-                Prompt.ask(
+                choice = Prompt.ask(
                     "[bold green]select an option[/]",
                     choices=["analyze", "prompt"],
                     default="analyze",
                 )
+
+                if choice == "analyze":
+                    result = analyze(prompt)
+
         else:
             lang = Prompt.ask(
                 "[bold green]language[/]", choices=["EN", "RU"], default="EN"

@@ -1,3 +1,5 @@
+import ollama  # noqa
+
 from model_data import *
 
 
@@ -15,3 +17,7 @@ def generate(soul: tuple, speech: tuple, mind: tuple, lang: str) -> str:
             personality.append(rules[key][value])
 
     return "\n".join(personality)
+
+
+def analyze(prompt: str) -> str:
+    pass
