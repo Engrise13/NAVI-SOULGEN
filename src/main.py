@@ -66,6 +66,7 @@ while True:
                 )
 
                 if choice == "analyze":
+                    model = Prompt.ask("[bold green]enter model[/]")
                     result = analyze(model, prompt)
 
         else:
