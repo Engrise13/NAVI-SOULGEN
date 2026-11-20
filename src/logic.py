@@ -1,4 +1,4 @@
-import ollama  # noqa
+import ollama
 
 from model_data import *
 
@@ -19,5 +19,21 @@ def generate(soul: tuple, speech: tuple, mind: tuple, lang: str) -> str:
     return "\n".join(personality)
 
 
-def analyze(model: str, prompt: str) -> str:
-    pass
+def analyze(model: str, lang: str, user_prompt: str) -> str:
+    response = ollama.chat(
+        model=model,
+        messages=[
+            {
+                "role": "system",
+                "content": analyze_prompt[lang],
+            },
+            {
+                "role": "user",
+                "content": user_prompt,
+            },
+        ],
+        think=False,
+        format="json",
+        options={"temperature": 0.2, "num_ctx": 1024},
+    )
+    return response["message"]["content"]

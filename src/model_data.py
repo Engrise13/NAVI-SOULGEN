@@ -183,3 +183,5 @@ MIND_RULES_EN = {
         "5": "subject the core premises to ruthless epistemic scrutiny, targeting hidden contradictions and logical traps.",
     },
 }
+
+analyze_prompt = {"RU": "абваьбваввабвб", "EN": "eneskfdflsdjifjfdl"}
