@@ -1,3 +1,5 @@
+import json
+
 import ollama
 
 from model_data import *
@@ -19,7 +21,7 @@ def generate(soul: tuple, speech: tuple, mind: tuple, lang: str) -> str:
     return "\n".join(personality)
 
 
-def analyze(model: str, lang: str, user_prompt: str) -> str:
+def analyze(model: str, lang: str, user_prompt: str) -> dict:
     response = ollama.chat(
         model=model,
         messages=[
@@ -36,4 +38,4 @@ def analyze(model: str, lang: str, user_prompt: str) -> str:
         format="json",
         options={"temperature": 0.2, "num_ctx": 1024},
     )
-    return response["message"]["content"]
+    return json.loads(response["message"]["content"])
