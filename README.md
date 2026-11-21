@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License" />
 </p>
 
-Deterministic CLI engine for synthesizing and profiling AI system prompts. Encodes 12 behavioral parameters ($5^{12} = 244,140,625$ unique combinations per language) into a portable token (`NAVI-(EN/RU)-XXXX-XXXX-XXXX`), compiles ready-to-use `EN`/`RU` system instructions, and evaluates persona profiles via local Ollama models.
+Deterministic CLI engine for synthesizing and profiling AI system prompts. Encodes 12 behavioral parameters ($5^{12} = 244,140,625$ unique combinations per language) into a portable token (`NAVI-(EN/RU)-XXXX-XXXX-XXXX`), compiles ready-to-use `EN`/`RU` system instructions, and evaluates persona profiles via Ollama models.
 
 ![NAVI SOULGEN Showcase](showcase.png)
 
