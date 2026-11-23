@@ -39,9 +39,9 @@ CALIBRATION_HELP = (
 )
 
 
-def copy_to_clipboard(text: str, label: str = "copied") -> None:
+def copy_to_clipboard(text: str, what: str) -> None:
     pyperclip.copy(text)
-    console.print(f"[bold green]{label} to clipboard![/]")
+    console.print(f"[bold green]{what} copied to clipboard![/]")
 
 
 def print_banner() -> None:
@@ -82,7 +82,7 @@ def handle_inspect() -> None:
     )
 
     if choice == "prompt":
-        copy_to_clipboard(prompt, "prompt copied")
+        copy_to_clipboard(prompt, "prompt")
         return
 
     model = Prompt.ask("[bold green]model[/]", default="qwen3.5:4b")
@@ -104,7 +104,7 @@ def handle_inspect() -> None:
     )
 
     if Confirm.ask("[bold green]copy prompt to clipboard[/]"):
-        copy_to_clipboard(prompt)
+        copy_to_clipboard(prompt, "prompt")
 
 
 def handle_calibrate() -> None:
@@ -136,7 +136,7 @@ def handle_calibrate() -> None:
     )
     if clipboard != "none":
         target = prompt if clipboard == "prompt" else token
-        copy_to_clipboard(target, f"{clipboard} copied")
+        copy_to_clipboard(target, clipboard)
 
 
 def main() -> None:
@@ -150,7 +150,7 @@ def main() -> None:
         try:
             action = Prompt.ask(
                 "[bold green]choose action[/]",
-                choices=[*actions.keys(), "quit"],
+                choices=[*actions, "quit"],
                 default="calibrate",
             )
             if action == "quit":

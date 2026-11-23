@@ -31,9 +31,9 @@ def generate(
         raise ValueError(f"Unsupported language: {lang}")
 
     personality = [
-        rule_options[val]
+        rules_value[value]
         for rules, values in zip(RULES_MAP[lang], (soul, speech, mind), strict=True)
-        for rule_options, val in zip(rules.values(), values, strict=True)
+        for rules_value, value in zip(rules.values(), values, strict=True)
     ]
     return "\n".join(personality)
 
@@ -62,7 +62,7 @@ def analyze(model: str, lang: str, user_prompt: str) -> dict[str, str]:
     except json.JSONDecodeError as err:
         raise ValueError(f"{model}: invalid JSON response") from err
 
-    if not isinstance(data, dict) or not REQUIRED_KEYS.issubset(data.keys()):
-        raise ValueError(f"{model}: incomplete JSON structure")
+    if not isinstance(data, dict) or REQUIRED_KEYS != data.keys():
+        raise ValueError(f"{model}: invalid JSON structure")
 
     return data
