@@ -73,7 +73,7 @@ pip install ollama rich pyfiglet pyperclip
 Run the entry point:
 
 ```bash
-python main.py
+python src/main.py
 ```
 
 ### 1. `calibrate` (Token & Prompt Synthesis)
@@ -109,9 +109,13 @@ When running `inspect` → `analyze`, the local model is constrained (`format="j
 ## Project Structure
 
 ```text
-├── main.py       # CLI entrypoint, ASCII banner, interactive calibrate/inspect loops
-├── logic.py      # Deterministic prompt compiler and Ollama JSON analysis pipeline
-└── model_data.py # EN/RU behavioral rule matrices (SOUL/SPEECH/MIND) and judge prompts
+NAVI_SOULGEN/
+├── src/
+│   ├── logic.py      # Deterministic prompt compiler and Ollama JSON analysis pipeline
+│   ├── main.py       # CLI entrypoint, ASCII banner, interactive calibrate/inspect loops
+│   └── model_data.py # EN/RU behavioral rule matrices (SOUL/SPEECH/MIND) and judge prompts
+├── LICENSE
+└── README.md
 ```
 
 ---
